@@ -27,7 +27,7 @@ Last Sign-in is a small local memory for method type only.
 
 ## Install (easy)
 
-1. Download **`last-sign-in-*-chrome.zip`** from [Releases](https://github.com/Gtarafdar/last-sign-in/releases/latest).
+1. Download **`last-sign-in-0.1.1-chrome.zip`** (or latest) from [Releases](https://github.com/Gtarafdar/last-sign-in/releases/latest).
 2. Unzip it.
 3. Open `chrome://extensions` → turn on **Developer mode**.
 4. **Load unpacked** → select the unzipped folder that contains `manifest.json`.
