@@ -66,6 +66,8 @@ img {
   display: grid;
   grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
   min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .sidebar {
@@ -168,12 +170,42 @@ img {
 }
 
 .content {
-  padding: 1.5rem clamp(1.25rem, 3vw, 3rem) 4rem;
-  max-width: 980px;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem clamp(1.5rem, 5vw, 4rem) 4.5rem;
+}
+
+.content > * {
+  width: 100%;
+  max-width: 1040px;
 }
 
 .hero {
-  padding: 1.5rem 0 2.5rem;
+  padding: 1.75rem 0 2.75rem;
+  text-align: center;
+}
+
+.hero .hero-lead,
+.hero .hero-actions,
+.hero .meta-row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero h1 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  justify-content: center;
+}
+
+.meta-row {
+  justify-content: center;
 }
 
 .eyebrow {
@@ -194,15 +226,15 @@ img {
   font-size: clamp(2.3rem, 4.5vw, 3.4rem);
   letter-spacing: -0.03em;
   line-height: 1.08;
-  margin: 0 0 0.85rem;
+  margin: 0 auto 0.85rem;
   max-width: 14ch;
 }
 
 .hero-lead {
   color: var(--muted);
   font-size: 1.08rem;
-  max-width: 42rem;
-  margin: 0 0 1.4rem;
+  max-width: 40rem;
+  margin: 0 auto 1.4rem;
 }
 
 .hero-actions {
@@ -379,18 +411,19 @@ section h2 {
 
 .maker {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 1.2rem;
-  align-items: start;
+  grid-template-columns: 140px 1fr;
+  gap: 1.35rem;
+  align-items: center;
 }
 
 .maker-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 18px;
+  width: 140px;
+  height: 140px;
+  border-radius: 22px;
   object-fit: cover;
   border: 1px solid var(--line);
   background: var(--bg-elevated);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
 }
 
 .socials {
@@ -464,7 +497,9 @@ section h2 {
   font-size: 0.82rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.6rem 1.2rem;
+  text-align: center;
 }
 
 .mobile-bar {
@@ -507,6 +542,27 @@ section h2 {
   }
 
   .content {
-    padding: 1rem 1rem 3rem;
+    padding: 1.25rem 1.1rem 3rem;
+    align-items: stretch;
+  }
+
+  .hero {
+    text-align: left;
+  }
+
+  .hero-actions,
+  .meta-row {
+    justify-content: flex-start;
+  }
+
+  .hero h1,
+  .hero-lead {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .footer {
+    justify-content: flex-start;
+    text-align: left;
   }
 }
