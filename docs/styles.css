@@ -67,24 +67,17 @@ img {
   border-radius: 8px;
 }
 
-/* Sidebar left + equal right gutter → main sits in true page center */
 .shell {
-  display: grid;
-  grid-template-columns: var(--sidebar-w) minmax(0, 1fr) var(--sidebar-w);
   min-height: 100vh;
   width: 100%;
 }
 
-.shell::after {
-  content: "";
-  grid-column: 3;
-}
-
 .sidebar {
-  grid-column: 1;
-  position: sticky;
+  position: fixed;
+  left: 0;
   top: 0;
-  height: 100vh;
+  bottom: 0;
+  width: var(--sidebar-w);
   padding: 1.4rem 1rem 1.5rem;
   border-right: 1px solid var(--line);
   background: rgba(8, 14, 12, 0.78);
@@ -221,9 +214,9 @@ img {
 }
 
 .content {
-  grid-column: 2;
+  margin-left: var(--sidebar-w);
   min-width: 0;
-  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -232,7 +225,7 @@ img {
 
 .content > * {
   width: 100%;
-  max-width: 920px;
+  max-width: 880px;
 }
 
 .hero {
@@ -241,8 +234,8 @@ img {
 }
 
 .hero-icon {
-  width: 88px;
-  height: 88px;
+  width: 68px;
+  height: 68px;
   margin: 0 auto 1.15rem;
   border-radius: 22px;
   box-shadow:
@@ -312,6 +305,9 @@ img {
 
 .hero-art {
   margin-top: 1.75rem;
+  width: 100%;
+  max-width: 680px;
+  height: min(300px, 42vw);
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -321,8 +317,7 @@ img {
 
 .hero-art img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -352,12 +347,12 @@ img {
   border: 1px solid var(--line);
   background: #0a100e;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  height: 210px;
 }
 
 .illust-frame img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -452,7 +447,9 @@ section h2 {
 
 .shot img {
   width: 100%;
-  height: auto;
+  height: 280px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .shot figcaption {
@@ -659,34 +656,18 @@ section h2 {
 }
 
 @media (max-width: 1100px) {
-  .shell {
-    grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
-  }
-
-  .shell::after {
-    display: none;
-  }
-
   .content > * {
-    max-width: 860px;
+    max-width: 800px;
   }
 }
 
 @media (max-width: 900px) {
-  .shell {
-    grid-template-columns: 1fr;
-  }
-
   .sidebar {
     display: none;
   }
 
-  .shell::after {
-    display: none;
-  }
-
   .content {
-    grid-column: 1;
+    margin-left: 0;
   }
 
   .mobile-bar {
