@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Last Sign-in — Remember how you signed in</title>
+    <meta
+      name="description"
+      content="Privacy-first Chrome extension that remembers which sign-in method you used — Google, GitHub, SSO, password — never your passwords, emails, cookies, or tokens."
+    />
+    <meta property="og:title" content="Last Sign-in" />
+    <meta
+      property="og:description"
+      content="Remembers how you signed in. Local-only. Manual fallback when auto-detect can’t win."
+    />
+    <meta property="og:image" content="screenshots/ss-welcome-popup.png" />
+    <link rel="icon" href="icon/48.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Sora:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <div class="mobile-bar">
+      <a class="brand" href="#top">
+        <img src="icon/48.png" alt="" width="32" height="32" />
+        <div>
+          <strong>Last Sign-in</strong>
+          <span>Local · privacy-first</span>
+        </div>
+      </a>
+      <a class="btn btn-primary" href="https://github.com/Gtarafdar/last-sign-in/releases/latest">Download</a>
+    </div>
+
+    <div class="shell">
+      <aside class="sidebar" aria-label="Site">
+        <a class="brand" href="#top">
+          <img src="icon/48.png" alt="" width="40" height="40" />
+          <div>
+            <strong>Last Sign-in</strong>
+            <span>Chrome extension</span>
+          </div>
+        </a>
+
+        <nav class="side-nav">
+          <a href="#overview">Overview</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="#how">How it works</a>
+          <a href="#manual">Manual mode</a>
+          <a href="#limits">Limitations</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#download">Download</a>
+          <a href="#why">Why I built this</a>
+          <a href="#maker">Maker</a>
+          <a href="#workshop">Workshop</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="side-cta">
+          <a class="btn btn-primary" href="https://github.com/Gtarafdar/last-sign-in/releases/latest">
+            Download zip
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/Gtarafdar/last-sign-in">
+            ★ Star on GitHub
+          </a>
+          <a class="btn btn-ghost" href="https://gtarafdar.com/donate">Donate</a>
+        </div>
+      </aside>
+
+      <main id="main" class="content">
+        <header class="hero" id="top">
+          <div class="eyebrow">Local-only · MIT · Chrome MV3</div>
+          <h1>Last Sign-in</h1>
+          <p class="hero-lead">
+            Remembers <em>how</em> you signed in — Google, GitHub, SSO, password —
+            never your passwords, emails, cookies, or tokens. Everything stays on
+            this device.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/Gtarafdar/last-sign-in/releases/latest">
+              Download extension
+            </a>
+            <a class="btn btn-ghost" href="https://github.com/Gtarafdar/last-sign-in">
+              View source
+            </a>
+            <a class="btn btn-ghost" href="https://gtarafdar.com/donate">Donate</a>
+          </div>
+          <div class="meta-row">
+            <span>Latest: v0.1.0</span>
+            <a href="https://github.com/Gtarafdar/last-sign-in/releases/latest">Easy zip install</a>
+            <a href="privacy.md">Privacy policy</a>
+            <a href="https://github.com/Gtarafdar/last-sign-in#readme">README</a>
+          </div>
+        </header>
+
+        <section id="overview">
+          <h2>The quiet gap</h2>
+          <p class="section-lead">
+            You open a login screen with eight buttons. Last month it was Google.
+            Or was it GitHub? Or the work email? You guess wrong, bounce through
+            OAuth, and waste another minute. Password managers store secrets —
+            they don’t tell you which <em>method</em> you used.
+          </p>
+          <div class="grid-2">
+            <article class="card">
+              <h3>Without Last Sign-in</h3>
+              <ul>
+                <li>Juggle Google / GitHub / SSO / password</li>
+                <li>Forget which account path worked last time</li>
+                <li>Retry until something sticks</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>With Last Sign-in</h3>
+              <ul>
+                <li>LAST USED / LAST SELECTED on the method</li>
+                <li>Optional name or email label for manual saves</li>
+                <li>Local storage only — no cloud account</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="screenshots">
+          <h2>See it in action</h2>
+          <p class="section-lead">
+            Welcome popup, settings, Product Hunt with a manual Last used badge,
+            and the popup when auto-detect needs a hand.
+          </p>
+          <div class="grid-2">
+            <figure class="shot">
+              <img src="screenshots/ss-welcome-popup.png" alt="Last Sign-in welcome popup" />
+              <figcaption>
+                <strong>Welcome</strong> — Enable on a site, sign in as usual, we
+                mark the method next time.
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="screenshots/ss-popup-manual.png" alt="Manual save popup for Product Hunt" />
+              <figcaption>
+                <strong>Manual fallback</strong> — When auto-track can’t pin icon-only
+                buttons, save the method once in the popup.
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="screenshots/producthunt-real.png" alt="Product Hunt login with Last used on Google" />
+              <figcaption>
+                <strong>Product Hunt</strong> —
+                <span class="pill">Manual</span>
+                Icon-only providers (Google / Apple / Facebook) are hard to auto-pin.
+                Save Google manually once; optional name/email label helps next visit.
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="screenshots/settings-real.png" alt="Last Sign-in settings page" />
+              <figcaption>
+                <strong>Settings</strong> — Per-site records, Manual / Confirmed status,
+                forget anytime. Nothing leaves the device.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="how">
+          <h2>How it works</h2>
+          <p class="section-lead">
+            Per-site enable. Method type only. Badges when we can; honest fallback when we can’t.
+          </p>
+          <div class="steps">
+            <div class="step">
+              <div>
+                <h3>Install the zip</h3>
+                <p>
+                  Unzip the release, open <code>chrome://extensions</code>, turn on
+                  Developer mode, Load unpacked → select the folder with
+                  <code>manifest.json</code>.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <h3>Open a sign-in page</h3>
+                <p>Click the extension → <strong>Enable on this site</strong>.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <h3>Sign in as usual</h3>
+                <p>
+                  We try to mark the method you used. Next visit, look for
+                  LAST USED / LAST SELECTED.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <h3>If auto misses — Manual mode</h3>
+                <p>
+                  Choose the method in the popup. Optionally add a name or email
+                  label as a local reminder. One save; reminders after that.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="manual">
+          <h2>Manual mode when auto can’t win</h2>
+          <p class="section-lead">
+            Some login UIs use icon-only buttons, shadow DOM, or canvas-heavy
+            widgets. We can’t always pin a badge to the exact control — and we
+            refuse to scrape passwords or emails to “guess harder.”
+          </p>
+          <div class="grid-2">
+            <article class="card">
+              <h3>Where Manual shines</h3>
+              <ul>
+                <li>Product Hunt–style icon rows (Google / Apple / Facebook)</li>
+                <li>Heavily customized SSO widgets</li>
+                <li>Sites where DOM labels don’t match the real provider</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Make Manual even easier</h3>
+              <ul>
+                <li>Pick the method once (e.g. Google)</li>
+                <li>Add an optional name or email label — stored locally only</li>
+                <li>Next visit: Last used (manual) + your label</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="limits">
+          <h2>Honest limitations</h2>
+          <p class="section-lead">
+            Built to be useful without pretending every site works like first-party
+            “Last used” on Lovable or Supabase.
+          </p>
+          <div class="limit-list">
+            <div class="limit-item">
+              <strong>Not every button can be auto-detected</strong>
+              <p>
+                Icon-only OAuth and some custom auth UIs need Manual mode. That’s
+                a feature of being privacy-safe, not a bug to paper over.
+              </p>
+            </div>
+            <div class="limit-item">
+              <strong>We never read passwords or emails from the page</strong>
+              <p>
+                If you type a name/email into Manual mode, it’s a reminder label
+                you chose — not scraped form data.
+              </p>
+            </div>
+            <div class="limit-item">
+              <strong>Chrome only (MV3) for now</strong>
+              <p>Firefox packaging exists in the toolchain but is not the polished line yet.</p>
+            </div>
+            <div class="limit-item">
+              <strong>Per-site permission</strong>
+              <p>Nothing runs until you Enable on that site. No broad always-on scrape of the web.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="privacy">
+          <h2>Privacy by default</h2>
+          <p class="section-lead">
+            Local-only storage. No analytics SDK. No Last Sign-in cloud. Full policy:
+            <a href="privacy.md">privacy.md</a>.
+          </p>
+          <div class="grid-3">
+            <article class="card">
+              <h3>Stored</h3>
+              <p>Origin, method type, optional label, timestamps, preferences.</p>
+            </article>
+            <article class="card">
+              <h3>Never stored</h3>
+              <p>Passwords, cookies, tokens, scraped emails, browsing history.</p>
+            </article>
+            <article class="card">
+              <h3>You control</h3>
+              <p>Forget one site or delete all records from Settings.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="download">
+          <h2>Download</h2>
+          <p class="section-lead">
+            Grab the latest zip from GitHub Releases. Prefer official releases only.
+          </p>
+          <div class="card">
+            <h3>Install in under a minute</h3>
+            <ol>
+              <li>Download <code>last-sign-in-*-chrome.zip</code> from
+                <a href="https://github.com/Gtarafdar/last-sign-in/releases/latest">Releases</a>.</li>
+              <li>Unzip it.</li>
+              <li>Chrome → <code>chrome://extensions</code> → Developer mode → Load unpacked.</li>
+              <li>Select the unzipped folder that contains <code>manifest.json</code>.</li>
+            </ol>
+            <div class="hero-actions" style="margin-top: 1rem">
+              <a class="btn btn-primary" href="https://github.com/Gtarafdar/last-sign-in/releases/latest">
+                Download latest release
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Gtarafdar/last-sign-in">
+                ★ Star the repo
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="why">
+          <h2>Why I built this</h2>
+          <p class="section-lead">
+            Same quiet failure, over and over: I forgot which sign-in path I used
+            last time, and I was juggling Google, GitHub, SSO, and password across
+            work and side projects.
+          </p>
+          <div class="grid-2">
+            <article class="card">
+              <h3>The bind</h3>
+              <p>
+                Session cookies expire. Sites offer five “Continue with…” buttons.
+                Password managers fill secrets — they don’t point at the method.
+                I kept guessing wrong.
+              </p>
+            </article>
+            <article class="card">
+              <h3>What I needed</h3>
+              <p>
+                A small local memory for method type only. Badges when possible.
+                Manual + optional name/email label when auto can’t see the button.
+                No cloud. No credential harvest.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="maker">
+          <h2>About the maker</h2>
+          <div class="card maker">
+            <img
+              class="maker-avatar"
+              src="https://avatars.githubusercontent.com/u/5130455?v=4"
+              alt="Portrait of Gobinda Tarafdar"
+              width="120"
+              height="120"
+            />
+            <div>
+              <h3 style="margin-top: 0">Gobinda Tarafdar</h3>
+              <p style="color: var(--muted); margin: 0 0 0.6rem">
+                WordPress product marketer · stubborn problem-solver · lifelong Harry Potter devotee
+              </p>
+              <p style="color: var(--muted); margin: 0">
+                By day I am the Product Marketing Specialist at
+                <a href="https://wpbakery.com/">WPBakery</a>. Before that, I helped a
+                single plugin cross <strong style="color: var(--text)">400,000+</strong>
+                active users. When the day-job owl flies home, I tinker on my own
+                workshop of spells.
+              </p>
+              <div class="socials">
+                <a href="https://x.com/Gtarafdarr">X / Twitter</a>
+                <a href="https://www.linkedin.com/in/gobinda-tarafdar/">LinkedIn</a>
+                <a href="https://github.com/Gtarafdar">GitHub</a>
+                <a href="https://gtarafdar.com/donate">Donate</a>
+                <a href="https://gtarafdar.github.io/porter/#maker">More about me</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="workshop">
+          <h2>Also from the workshop</h2>
+          <p class="section-lead">Other tools from the same bench — free, local-first where it counts.</p>
+          <div class="workshop">
+            <a href="https://gtarafdar.github.io/porter/">
+              <strong>Porter</strong>
+              <span>Copy folders between your Macs like Finder · MCP for AI IDEs</span>
+            </a>
+            <a href="https://gtarafdar.github.io/aligner/">
+              <strong>Aligner</strong>
+              <span>Free local Chrome toolkit for design, measure, and WordPress</span>
+            </a>
+            <a href="https://gtarafdar.github.io/FinderFlow/">
+              <strong>FinderFlow</strong>
+              <span>Mac file manager with built-in editor</span>
+            </a>
+            <a href="https://gtarafdar.github.io/slack-agent-bridge/">
+              <strong>Slack Agent Bridge</strong>
+              <span>MCP bridge for Cursor and Claude</span>
+            </a>
+            <a href="https://gtarafdar.github.io/auto-afk-slack/">
+              <strong>Auto AFK Slack</strong>
+              <span>Lock your Mac, Slack goes AFK</span>
+            </a>
+            <a href="https://gtarafdar.github.io/slack-teammate-local-time/">
+              <strong>Slack Teammate Time</strong>
+              <span>Teammate local times inline in Slack</span>
+            </a>
+            <a href="https://gtarafdar.github.io/broken-link-checker/">
+              <strong>Broken Link Checker</strong>
+              <span>Find broken links without leaving the page</span>
+            </a>
+            <a href="https://thedocscriber.com/">
+              <strong>Docscriber</strong>
+              <span>Documentation, conjured</span>
+            </a>
+            <a href="https://therecaller.com/">
+              <strong>TheRecaller</strong>
+              <span>A memory charm for what you forget online</span>
+            </a>
+            <a href="https://theeditra.com/">
+              <strong>TheEditra</strong>
+              <span>AI video editor</span>
+            </a>
+            <a href="https://thequillpress.com/">
+              <strong>The Quill Press</strong>
+              <span>Tech news, Daily Prophet style</span>
+            </a>
+            <a href="https://costlas.com/">
+              <strong>Costlas</strong>
+              <span>Cost of living for 140+ countries</span>
+            </a>
+          </div>
+        </section>
+
+        <section id="faq">
+          <h2>FAQ</h2>
+          <div class="limit-list">
+            <div class="limit-item">
+              <strong>Does this store my password?</strong>
+              <p>No. Never. Method type and optional labels you type yourself only.</p>
+            </div>
+            <div class="limit-item">
+              <strong>Why Manual on Product Hunt?</strong>
+              <p>
+                Icon-only Google / Apple / Facebook buttons often can’t be pinned
+                reliably. Save Google once with Manual — add a name/email label if
+                you want — and you’re set.
+              </p>
+            </div>
+            <div class="limit-item">
+              <strong>Is there a Chrome Web Store listing?</strong>
+              <p>
+                Shipping via GitHub Releases first. Store draft lives in the repo
+                under <code>docs/store-listing.md</code>.
+              </p>
+            </div>
+            <div class="limit-item">
+              <strong>License?</strong>
+              <p>MIT. Free to use, fork, and share.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="cta-band" id="support">
+          <h2>If Last Sign-in saves you a wrong OAuth guess</h2>
+          <p class="section-lead" style="margin-bottom: 1rem">
+            MIT-licensed. No ads. No Last Sign-in cloud. A GitHub star helps others
+            find it. A small donation keeps the workshop lit.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/Gtarafdar/last-sign-in">★ Star on GitHub</a>
+            <a class="btn btn-ghost" href="https://gtarafdar.com/donate">Donate</a>
+            <a class="btn btn-ghost" href="https://x.com/Gtarafdarr">Follow on X</a>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <span>Last Sign-in · MIT © 2026 Gobinda Tarafdar</span>
+          <a href="privacy.md">Privacy</a>
+          <a href="https://github.com/Gtarafdar/last-sign-in/blob/main/LICENSE">License</a>
+          <a href="https://github.com/Gtarafdar/last-sign-in/releases">Releases</a>
+          <a href="https://gtarafdar.github.io/porter/#maker">Maker</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

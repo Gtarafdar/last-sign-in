@@ -1,0 +1,169 @@
+:root {
+  --color-ink: #152521;
+  --color-muted: #61706a;
+  --color-surface: #f7f4ec;
+  --color-card: #fffdf8;
+  --color-line: #d9ded8;
+  --color-green: #39c985;
+  --color-green-dark: #166b4a;
+  --color-green-soft: #bdf4d5;
+  --color-amber: #ffc857;
+  --color-amber-dark: #9a6814;
+  --color-amber-soft: #fff0bf;
+  --color-danger: #b84040;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-popup: 0 10px 30px rgba(21, 37, 33, 0.12);
+  --focus-ring: 0 0 0 3px rgba(57, 201, 133, 0.32);
+  color-scheme: light;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ink: #e8f0ec;
+    --color-muted: #9aaba3;
+    --color-surface: #101815;
+    --color-card: #18221e;
+    --color-line: #2a3832;
+    --color-green-soft: #1a3d2e;
+    --color-amber-soft: #3d3218;
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  color: var(--color-ink);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: var(--color-green);
+}
+
+.btn-primary {
+  background: var(--color-green-dark);
+  border-color: var(--color-green-dark);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-danger {
+  color: var(--color-danger);
+  border-color: color-mix(in srgb, var(--color-danger) 35%, var(--color-line));
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-muted);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.field input,
+.field select {
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  color: var(--color-ink);
+}
+
+.muted {
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.pill-confirmed {
+  background: var(--color-green-soft);
+  color: var(--color-green-dark);
+}
+
+.pill-pending {
+  background: var(--color-amber-soft);
+  color: var(--color-amber-dark);
+}
+
+.pill-manual {
+  background: var(--color-green-soft);
+  color: var(--color-green-dark);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
