@@ -3,18 +3,180 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Last Sign-in — Remember how you signed in</title>
+    <title>Last Sign-in — Remember how you signed in | Privacy-first Chrome extension</title>
     <meta
       name="description"
-      content="Privacy-first Chrome extension that remembers which sign-in method you used — Google, GitHub, SSO, password — never your passwords, emails, cookies, or tokens."
+      content="Privacy-first Chrome extension that remembers which sign-in method you used — Google, GitHub, SSO, password — never your passwords, emails, cookies, or tokens. Local-only. Free &amp; MIT."
     />
-    <meta property="og:title" content="Last Sign-in" />
+    <meta
+      name="keywords"
+      content="Last Sign-in, Chrome extension, last used login, sign-in method, OAuth reminder, Google GitHub SSO, privacy, local storage, manual login badge"
+    />
+    <meta name="author" content="Gobinda Tarafdar" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="theme-color" content="#0b1210" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="application-name" content="Last Sign-in" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href="https://gtarafdar.github.io/last-sign-in/" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="https://gtarafdar.github.io/last-sign-in/icon/32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="https://gtarafdar.github.io/last-sign-in/icon/48.png" type="image/png" sizes="48x48" />
+    <link rel="icon" href="https://gtarafdar.github.io/last-sign-in/icon/128.png" type="image/png" sizes="128x128" />
+    <link rel="apple-touch-icon" href="https://gtarafdar.github.io/last-sign-in/apple-touch-icon.png" sizes="180x180" />
+    <link rel="shortcut icon" href="https://gtarafdar.github.io/last-sign-in/icon/48.png" type="image/png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Last Sign-in" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://gtarafdar.github.io/last-sign-in/" />
+    <meta
+      property="og:title"
+      content="Last Sign-in — Remember how you signed in"
+    />
     <meta
       property="og:description"
-      content="Remembers how you signed in. Local-only. Manual fallback when auto-detect can’t win."
+      content="Privacy-first Chrome extension. Remembers Google, GitHub, SSO, or password — never credentials. Local-only. Manual mode when auto can’t win."
     />
-    <meta property="og:image" content="screenshots/ss-welcome-popup.png" />
-    <link rel="icon" href="icon/48.png" type="image/png" />
+    <meta
+      property="og:image"
+      content="https://gtarafdar.github.io/last-sign-in/og-image.jpg"
+    />
+    <meta property="og:image:secure_url" content="https://gtarafdar.github.io/last-sign-in/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Last Sign-in — remember how you signed in, local-only Chrome extension"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Gtarafdarr" />
+    <meta name="twitter:creator" content="@Gtarafdarr" />
+    <meta
+      name="twitter:title"
+      content="Last Sign-in — Remember how you signed in"
+    />
+    <meta
+      name="twitter:description"
+      content="Privacy-first Chrome extension. Remembers your sign-in method — never passwords or emails. Local-only."
+    />
+    <meta
+      name="twitter:image"
+      content="https://gtarafdar.github.io/last-sign-in/og-image.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Last Sign-in — remember how you signed in, local-only Chrome extension"
+    />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://gtarafdar.github.io/last-sign-in/#website",
+            "url": "https://gtarafdar.github.io/last-sign-in/",
+            "name": "Last Sign-in",
+            "description": "Privacy-first Chrome extension that remembers which sign-in method you used — never passwords, emails, cookies, or tokens.",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://gtarafdar.github.io/last-sign-in/#person" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://gtarafdar.github.io/last-sign-in/#webpage",
+            "url": "https://gtarafdar.github.io/last-sign-in/",
+            "name": "Last Sign-in — Remember how you signed in",
+            "isPartOf": { "@id": "https://gtarafdar.github.io/last-sign-in/#website" },
+            "about": { "@id": "https://gtarafdar.github.io/last-sign-in/#software" },
+            "description": "Privacy-first Chrome extension that remembers which sign-in method you used — Google, GitHub, SSO, password — never your credentials.",
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://gtarafdar.github.io/last-sign-in/og-image.jpg",
+              "width": 1200,
+              "height": 630
+            },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://gtarafdar.github.io/last-sign-in/#software",
+            "name": "Last Sign-in",
+            "applicationCategory": "BrowserApplication",
+            "operatingSystem": "Chrome",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "downloadUrl": "https://github.com/Gtarafdar/last-sign-in/releases/latest",
+            "softwareVersion": "0.1.2",
+            "license": "https://github.com/Gtarafdar/last-sign-in/blob/main/LICENSE",
+            "url": "https://gtarafdar.github.io/last-sign-in/",
+            "image": "https://gtarafdar.github.io/last-sign-in/og-image.jpg",
+            "description": "Remembers how you signed in on each site — Google, GitHub, SSO, password — without storing passwords, emails, cookies, or tokens. Local-only storage with manual fallback.",
+            "author": { "@id": "https://gtarafdar.github.io/last-sign-in/#person" },
+            "publisher": { "@id": "https://gtarafdar.github.io/last-sign-in/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://gtarafdar.github.io/last-sign-in/#person",
+            "name": "Gobinda Tarafdar",
+            "url": "https://gtarafdar.github.io/porter/#maker",
+            "sameAs": [
+              "https://github.com/Gtarafdar",
+              "https://x.com/Gtarafdarr",
+              "https://www.linkedin.com/in/gobinda-tarafdar/"
+            ],
+            "jobTitle": "Product Marketing Specialist",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "WPBakery",
+              "url": "https://wpbakery.com/"
+            },
+            "image": "https://gtarafdar.github.io/last-sign-in/maker.jpg"
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://gtarafdar.github.io/last-sign-in/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does Last Sign-in store my password?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Never. It stores method type and optional reminder labels you type yourself only."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why Manual mode on Product Hunt?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Icon-only Google / Apple / Facebook buttons often can’t be pinned reliably. Save Google once with Manual — add a name or email label if you want — and you’re set."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What license is Last Sign-in?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MIT. Free to use, fork, and share."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
