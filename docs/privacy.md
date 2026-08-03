@@ -59,7 +59,10 @@ Last Sign-in handles only the local data described above, and only to provide it
 
 ## Contact
 
-Privacy questions about Last Sign-in: open an issue at  
-[https://github.com/Gtarafdar/last-sign-in/issues](https://github.com/Gtarafdar/last-sign-in/issues)
+Privacy and product support for Last Sign-in:
+
+- Support page: [https://gtarafdar.github.io/last-sign-in/#support](https://gtarafdar.github.io/last-sign-in/#support)
+- Email: gobinda.ext1@gmail.com
+- GitHub Issues: [https://github.com/Gtarafdar/last-sign-in/issues](https://github.com/Gtarafdar/last-sign-in/issues)
 
 Developer: Gobinda Tarafdar · [Maker page](https://gtarafdar.github.io/porter/#maker)

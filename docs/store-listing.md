@@ -158,5 +158,5 @@ Support: https://github.com/Gtarafdar/last-sign-in/issues
 
 ```
 Homepage: https://gtarafdar.github.io/last-sign-in/
-Support: https://github.com/Gtarafdar/last-sign-in/issues
+Support: https://gtarafdar.github.io/last-sign-in/#support
 ```
