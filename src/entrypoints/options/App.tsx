@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { AUTH_METHODS } from '~/lib/methods';
 import { sendMessage } from '~/lib/messages';
-import type { Settings, SiteRecord } from '~/lib/types';
+import type { AuthMethodId, Settings, SiteRecord } from '~/lib/types';
 
 export default function App() {
   const [settings, setSettings] = useState<Settings | null>(null);
@@ -8,6 +9,10 @@ export default function App() {
   const [query, setQuery] = useState('');
   const [announce, setAnnounce] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [methodId, setMethodId] = useState<AuthMethodId>('google');
+  const [profileLabel, setProfileLabel] = useState('');
+  const [busy, setBusy] = useState(false);
 
   const load = useCallback(async () => {
     setError(null);
@@ -39,6 +44,17 @@ export default function App() {
     );
   }, [records, query]);
 
+  function startEdit(record: SiteRecord) {
+    setEditingId(record.id);
+    setMethodId(record.methodId);
+    setProfileLabel(record.profileLabel ?? '');
+  }
+
+  function cancelEdit() {
+    setEditingId(null);
+    setProfileLabel('');
+  }
+
   async function patchSettings(patch: Partial<Settings>) {
     if (!settings) return;
     const next = await sendMessage<Settings>({
@@ -49,7 +65,34 @@ export default function App() {
     setAnnounce('Settings saved.');
   }
 
+  async function saveEdit(record: SiteRecord) {
+    setBusy(true);
+    setError(null);
+    try {
+      const method = AUTH_METHODS.find((m) => m.id === methodId);
+      await sendMessage({
+        type: 'UPDATE_SITE_RECORD',
+        payload: {
+          origin: record.origin,
+          siteKey: record.siteKey,
+          methodId,
+          methodLabel: method?.label ?? 'Custom',
+          profileLabel: profileLabel.trim() || null,
+          confidence: 'manual',
+        },
+      });
+      setAnnounce(`Updated ${record.siteKey}.`);
+      cancelEdit();
+      await load();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not update site');
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function forget(record: SiteRecord) {
+    if (editingId === record.id) cancelEdit();
     await sendMessage({
       type: 'DELETE_SITE_RECORD',
       payload: { origin: record.origin, siteKey: record.siteKey },
@@ -66,6 +109,7 @@ export default function App() {
     ) {
       return;
     }
+    cancelEdit();
     await sendMessage({ type: 'DELETE_ALL_RECORDS' });
     setAnnounce('All records deleted.');
     await load();
@@ -173,33 +217,110 @@ export default function App() {
               </tr>
             </thead>
             <tbody>
-              {filtered.map((r) => (
-                <tr key={r.id}>
-                  <td>
-                    <div>{r.siteKey}</div>
-                    {r.profileLabel && (
-                      <div className="muted">{r.profileLabel}</div>
-                    )}
-                  </td>
-                  <td>{r.methodLabel}</td>
-                  <td>
-                    {r.confidence === 'pending'
-                      ? 'Last selected'
-                      : r.confidence === 'manual'
-                        ? 'Manual'
-                        : 'Confirmed'}
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      onClick={() => void forget(r)}
-                    >
-                      Forget
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {filtered.map((r) => {
+                const isEditing = editingId === r.id;
+                return (
+                  <tr key={r.id} className={isEditing ? 'row-editing' : undefined}>
+                    <td>
+                      <div>{r.siteKey}</div>
+                      {!isEditing && r.profileLabel && (
+                        <div className="muted">{r.profileLabel}</div>
+                      )}
+                      {isEditing && (
+                        <div className="edit-panel">
+                          <div className="field">
+                            <label htmlFor={`method-${r.id}`}>Method</label>
+                            <select
+                              id={`method-${r.id}`}
+                              value={methodId}
+                              disabled={busy}
+                              onChange={(e) =>
+                                setMethodId(e.target.value as AuthMethodId)
+                              }
+                            >
+                              {AUTH_METHODS.filter((m) => m.id !== 'password').map(
+                                (m) => (
+                                  <option key={m.id} value={m.id}>
+                                    {m.label}
+                                  </option>
+                                ),
+                              )}
+                              <option value="password">Password</option>
+                              <option value="custom">Custom</option>
+                            </select>
+                          </div>
+                          <div className="field">
+                            <label htmlFor={`profile-${r.id}`}>
+                              Name or email label (optional)
+                            </label>
+                            <input
+                              id={`profile-${r.id}`}
+                              maxLength={64}
+                              placeholder="Work, Personal, you@…"
+                              value={profileLabel}
+                              disabled={busy}
+                              onChange={(e) => setProfileLabel(e.target.value)}
+                            />
+                            <p className="muted field-hint">
+                              Local reminder only — never sent anywhere.
+                            </p>
+                          </div>
+                          <div className="actions-row">
+                            <button
+                              type="button"
+                              className="btn"
+                              disabled={busy}
+                              onClick={cancelEdit}
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-primary"
+                              disabled={busy}
+                              onClick={() => void saveEdit(r)}
+                            >
+                              Save
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </td>
+                    <td>{isEditing ? '—' : r.methodLabel}</td>
+                    <td>
+                      {isEditing
+                        ? '—'
+                        : r.confidence === 'pending'
+                          ? 'Last selected'
+                          : r.confidence === 'manual'
+                            ? 'Manual'
+                            : 'Confirmed'}
+                    </td>
+                    <td>
+                      <div className="actions-row">
+                        {!isEditing && (
+                          <button
+                            type="button"
+                            className="btn"
+                            disabled={busy}
+                            onClick={() => startEdit(r)}
+                          >
+                            Edit
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          className="btn btn-danger"
+                          disabled={busy}
+                          onClick={() => void forget(r)}
+                        >
+                          Forget
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         )}
