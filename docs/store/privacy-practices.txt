@@ -1,0 +1,63 @@
+Chrome Web Store — Privacy practices (paste these)
+
+Go to: Item → Privacy practices tab → fill every field → Save draft → certify checkboxes.
+
+============================================================
+SINGLE PURPOSE DESCRIPTION
+============================================================
+
+Reminds you which sign-in method you previously used on a website (for example Google, GitHub, SSO, or password) by storing the method type locally and showing a LAST USED / LAST SELECTED label. It does not store passwords or scrape credentials.
+
+============================================================
+storage
+============================================================
+
+Save which sign-in method type you used on which site, optional user-typed reminder labels, and extension settings. All data is stored in chrome.storage.local on the user’s device only.
+
+============================================================
+activeTab
+============================================================
+
+Used when the user opens the extension popup on the current tab so we can identify that page’s origin, offer Enable on this site, and refresh the on-page reminder for the active tab after they save a method.
+
+============================================================
+scripting
+============================================================
+
+Used to inject our content helper on sites the user has enabled so we can detect clicks on sign-in method buttons and display the LAST USED / LAST SELECTED badge. Scripting is not used to read passwords or scrape form values.
+
+============================================================
+Host permission (optional http/https hosts)
+============================================================
+
+Host access is optional. When the user chooses Enable on this site, Chrome prompts for permission for that origin only (for example https://example.com/*). This allows the content script and badge to run on future visits to sites they opted into. We do not use host permission to access unrelated sites, read browsing history, or collect credentials.
+
+============================================================
+REMOTE CODE
+============================================================
+
+Select: No, I am not using remote code.
+
+(If a text box still appears, paste:)
+This extension does not execute remote code. All JavaScript and logic ship inside the uploaded package (Manifest V3). There is no CDN script loading, no eval of remote scripts, and no Last Sign-in server that serves executable code.
+
+============================================================
+PRIVACY POLICY URL
+============================================================
+
+https://gtarafdar.github.io/last-sign-in/privacy.md
+
+============================================================
+DATA USAGE CERTIFICATION
+============================================================
+
+Check / certify all required Developer Program Policies boxes on the Privacy practices tab, including Limited Use compliance.
+
+Accurate disclosures for this extension:
+- Does not collect or transmit user data to a remote Last Sign-in server
+- Uses only local chrome.storage.local for method reminders and settings
+- Does not sell user data
+- Does not use data for advertising
+- Handles only what is needed for the single purpose above
+
+Support: https://gtarafdar.github.io/last-sign-in/#support
