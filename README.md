@@ -68,6 +68,8 @@ Manual saves show **Last used (manual)** and still remind you next visit.
 
 Full policy: [docs/privacy.md](docs/privacy.md)
 
+Chrome Web Store submission kit: [docs/store-listing.md](docs/store-listing.md) · assets in [docs/store/](docs/store/)
+
 ## Changelog
 
 Release notes: [CHANGELOG.md](CHANGELOG.md).
