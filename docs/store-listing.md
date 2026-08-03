@@ -82,6 +82,8 @@ English
 
 ## Privacy tab
 
+Open **Privacy practices**, paste the fields below (or open `docs/store/privacy-practices.txt`), check the certification boxes, then **Save draft**.
+
 ### Single purpose (paste this)
 
 ```
@@ -93,25 +95,35 @@ Reminds you which sign-in method you previously used on a website (for example G
 **storage**
 
 ```
-Save which sign-in method type you used on which site, optional user-typed reminder labels, and extension settings — all in chrome.storage.local on the device.
+Save which sign-in method type you used on which site, optional user-typed reminder labels, and extension settings. All data is stored in chrome.storage.local on the user’s device only.
 ```
 
 **activeTab**
 
 ```
-When you open the popup or enable a site, act on the tab you are viewing so we can request host access for that origin and refresh reminders.
+Used when the user opens the extension popup on the current tab so we can identify that page’s origin, offer Enable on this site, and refresh the on-page reminder for the active tab after they save a method.
 ```
 
 **scripting**
 
 ```
-Inject the content helper after you enable a site so we can detect login controls you click and show the on-page badge.
+Used to inject our content helper on sites the user has enabled so we can detect clicks on sign-in method buttons and display the LAST USED / LAST SELECTED badge. Scripting is not used to read passwords or scrape form values.
 ```
 
-**Host permission / optional hosts**
+**Host permission**
 
 ```
-Host access is optional and requested only when you choose Enable on this site, for that origin only (for example https://example.com/*). This lets the badge and method detection run on future visits to sites you opted into. We do not use host access to read unrelated browsing or scrape credentials.
+Host access is optional. When the user chooses Enable on this site, Chrome prompts for permission for that origin only (for example https://example.com/*). This allows the content script and badge to run on future visits to sites they opted into. We do not use host permission to access unrelated sites, read browsing history, or collect credentials.
+```
+
+### Remote code
+
+Select: **No, I am not using remote code.**
+
+If a text box still appears, paste:
+
+```
+This extension does not execute remote code. All JavaScript and logic ship inside the uploaded package (Manifest V3). There is no CDN script loading, no eval of remote scripts, and no Last Sign-in server that serves executable code.
 ```
 
 ### Privacy policy URL
@@ -120,12 +132,15 @@ Host access is optional and requested only when you choose Enable on this site, 
 https://gtarafdar.github.io/last-sign-in/privacy.md
 ```
 
-### Data collection notes (dashboard checkboxes)
+### Data usage certification
 
-- Does not transmit browsing data to a Last Sign-in server (local-only)
-- Stores only: origins, method types, optional labels you type, timestamps, settings
-- No scraped emails/passwords/cookies/tokens
-- No sale of user data; see Limited Use section in the privacy policy
+Check every required box that your data usage complies with the Developer Program Policies.
+
+For this extension:
+- Does not collect or transmit user data to a remote Last Sign-in server
+- Local storage only (origins, method types, optional typed labels, timestamps, settings)
+- No sale of user data; not used for advertising
+- Only what is needed for the single purpose above
 
 ---
 
