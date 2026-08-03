@@ -1,0 +1,27 @@
+Tired of guessing whether you used GitHub, Google, SSO, or password last time?
+
+Last Sign-in remembers the type of sign-in method you chose on each website and shows a small LAST USED (or LAST SELECTED) label next to that option when you return.
+
+Privacy first
+- Does not read passwords, cookies, or tokens from the page
+- Does not scrape emails from forms — optional name/email labels are only what you type yourself
+- Data stays on your device
+- You enable the extension per site
+
+How it works
+1. Open a sign-in page
+2. Click the extension → Enable on this site
+3. Sign in as usual — we try to mark that method next time
+4. If auto-detect can’t pin icon-only buttons, save the method manually (optional name/email reminder label)
+
+Honest confidence
+- LAST SELECTED = you clicked it
+- LAST USED / Manual = you confirmed it or saved it yourself
+
+Edit any saved site from Settings. Forget one site or delete all anytime.
+
+No account required. No backend. No analytics in this version.
+
+Homepage: https://gtarafdar.github.io/last-sign-in/
+Source: https://github.com/Gtarafdar/last-sign-in
+Support: https://github.com/Gtarafdar/last-sign-in/issues
