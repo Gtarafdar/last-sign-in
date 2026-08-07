@@ -5,14 +5,15 @@ Privacy-first Chrome extension that remembers **how** you signed in on each site
 It never stores passwords, emails, cookies, or tokens. Everything stays on your device.
 
 **Landing page:** [gtarafdar.github.io/last-sign-in](https://gtarafdar.github.io/last-sign-in/)  
-**Download:** [Latest release (zip)](https://github.com/Gtarafdar/last-sign-in/releases/latest)
+**Download:** [Chrome Web Store](https://chromewebstore.google.com/detail/last-sign-in/ipcpmefhaeegbdglbbhjegflgibnndjp) · [GitHub zip](https://github.com/Gtarafdar/last-sign-in/releases/latest)
 
 <p align="center">
   <img src="docs/icon/128.png" alt="Last Sign-in icon" width="96" height="96" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/Gtarafdar/last-sign-in/releases/latest"><img src="https://img.shields.io/github/v/release/Gtarafdar/last-sign-in?style=flat-square&label=download" alt="Release" /></a>
+  <a href="https://chromewebstore.google.com/detail/last-sign-in/ipcpmefhaeegbdglbbhjegflgibnndjp"><img src="https://img.shields.io/badge/Chrome_Web_Store-Add_to_Chrome-4285F4?style=flat-square&logo=googlechrome&logoColor=white" alt="Chrome Web Store" /></a>
+  <a href="https://github.com/Gtarafdar/last-sign-in/releases/latest"><img src="https://img.shields.io/github/v/release/Gtarafdar/last-sign-in?style=flat-square&label=zip" alt="Release zip" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-3d9b72?style=flat-square" alt="MIT" /></a>
   <a href="docs/privacy.md"><img src="https://img.shields.io/badge/privacy-local--only-16201c?style=flat-square" alt="Privacy" /></a>
 </p>
@@ -26,6 +27,10 @@ You open a login screen with eight buttons. Last month it was Google — or GitH
 Last Sign-in is a small local memory for method type only.
 
 ## Install (easy)
+
+**Chrome Web Store (recommended):** [Add Last Sign-in to Chrome](https://chromewebstore.google.com/detail/last-sign-in/ipcpmefhaeegbdglbbhjegflgibnndjp).
+
+### Install from zip / Load unpacked
 
 1. Download **`last-sign-in-0.1.3-chrome.zip`** (or latest) from [Releases](https://github.com/Gtarafdar/last-sign-in/releases/latest).
 2. Unzip it.

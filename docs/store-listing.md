@@ -1,5 +1,7 @@
 # Chrome Web Store listing — Last Sign-in
 
+**Live listing:** https://chromewebstore.google.com/detail/last-sign-in/ipcpmefhaeegbdglbbhjegflgibnndjp
+
 Guide for the [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole).
 
 **Important:** The Store **Description** field is **plain text only**. It does **not** render Markdown. Do not paste this whole file into Description — paste only the block under “Description (paste this)”.
